@@ -1,0 +1,381 @@
+AUDIT AND FIX THIS ENTIRE WEBSITE FOR GOOGLE ADS COMPLIANCE.
+
+Do NOT bypass, trick, evade, or circumvent Google's advertising policies.
+Do NOT create fake information, fake authorization, fake reviews, fake certificates, fake registrations, cloaking, hidden text, redirects, or duplicate landing pages designed to evade policy enforcement.
+
+The goal is to make this website genuinely transparent, trustworthy, technically functional, and suitable for review by Google Ads.
+
+BUSINESS DETAILS — USE ONLY THESE:
+
+Business Name: Authorised Services
+Domain: authorisedservices.in
+Phone: 98113 56807‬
+Address: covered all sectors in Noida and Delhi
+BUSINESS TYPE:
+Independent TV and home-appliance repair service provider.
+
+==================================================
+
+1. # REMOVE MISLEADING AUTHORIZATION CLAIMS
+
+This is the MOST IMPORTANT requirement.
+
+The business must NOT claim to be:
+
+- Sony Authorised Service Centre
+- vu Authorised Service Centre
+- LG Authorised Service Centre
+- Panasonic Authorised Service Centre
+- Any manufacturer's official service centre
+
+unless actual authorization documentation exists.
+
+Replace potentially misleading wording such as:
+
+"Authorised Sony Service Centre"
+"Sony Authorised Service"
+"Official Sony Repair Centre"
+"Company Authorised Service Centre"
+
+with truthful wording such as:
+
+"TV Repair Service"
+"Independent TV Repair Service"
+"TV Repair at Home"
+"TV & Home Appliance Repair"
+
+Brand names may be used only to identify products that the business services.
+
+Add a clearly visible disclaimer:
+
+"Authorised Services is an independent repair service provider and is not affiliated with or officially authorised by any specific manufacturer unless explicitly stated."
+
+Do NOT hide this disclaimer in tiny text.
+
+# ================================================== 2. BUSINESS TRANSPARENCY
+
+Make the following information easy to find:
+
+Authorised Services
+Phone: 98113 56807‬
+Address: covered all sectors in Noida and Delhi
+Create a proper Contact page.
+
+Show the same business name, phone number and address consistently throughout the website.
+
+Do NOT invent:
+
+GST number
+CIN
+Government registration
+ISO certificate
+Manufacturer authorization
+Awards
+Certifications
+Branches
+Years of experience
+Number of technicians
+Customer count
+
+unless supplied by the business.
+
+# ================================================== 3. GOOGLE ADS LANDING PAGE QUALITY
+
+Make the homepage a genuine service landing page.
+
+Above the fold:
+
+Headline:
+"Professional TV Repair Service"
+
+Subheadline:
+"Independent TV repair and home service for LED, LCD and Smart TVs."
+
+CTA:
+"Book a Repair"
+
+Secondary CTA:
+"Call 98113 56807‬"
+
+Add useful service information instead of excessive marketing claims.
+
+Include:
+
+- Services
+- Service process
+- Brands/products serviced
+- Service area information
+- Contact information
+- Booking form
+- Legal links
+- Independent-service disclaimer
+
+# ================================================== 4. NO FALSE CLAIMS
+
+Remove or rewrite any claims that cannot be verified.
+
+Avoid phrases such as:
+
+"100% Guaranteed"
+"Official"
+"Government Approved"
+"Certified Technician"
+"Best in India"
+"No.1"
+"Authorized"
+"Guaranteed Same Day"
+"Lowest Price"
+"Original Parts Guaranteed"
+
+unless the business can actually substantiate the claim.
+
+Do not create fake testimonials.
+
+If reviews are not supplied, remove the testimonial section rather than generating fake customer reviews.
+
+# ================================================== 5. BRAND USAGE
+
+Create a section:
+
+"Brands & Products We Service"
+
+Use brand names only for identification.
+
+Example:
+
+Sony TVs
+vu TVs
+LG TVs
+TCL TVs
+Haier TVs
+Hisense TVs
+Panasonic TVs
+OnePlus TVs
+MI TVs
+etc.
+
+Add:
+
+"Brand names are used only to identify compatible products. Authorised Services is an independent service provider and is not affiliated with or endorsed by these manufacturers unless explicitly stated."
+
+Do NOT use manufacturer logos if they could imply official affiliation.
+
+# ================================================== 6. REQUIRED LEGAL PAGES
+
+Make sure these pages actually work:
+
+/privacy-policy
+/terms-and-conditions
+/service-policy
+/cancellation-refund-policy
+/disclaimer
+/contact
+/about
+
+Every page must be accessible through the footer.
+
+Do NOT use fake placeholder links.
+
+# ================================================== 7. PRIVACY & CUSTOMER DATA
+
+Booking form should collect only necessary information.
+
+Fields:
+
+Name
+Phone
+Address
+Appliance
+Brand
+Problem
+Preferred appointment time
+
+Add:
+
+"By submitting this form, you agree to our Terms & Conditions and acknowledge our Privacy Policy."
+
+Make both links clickable.
+
+Do not secretly collect unnecessary information.
+
+Do not claim compliance certifications that the business does not possess.
+
+# ================================================== 8. CONTACT / LEAD FUNCTIONALITY
+
+Phone button:
+
+tel:98113 56807‬
+
+WhatsApp button:
+
+Create a WhatsApp link using the business phone number ONLY if WhatsApp is actually available on that number.
+
+Booking form must provide a clear success/error state.
+
+Do not create fake "booking confirmed" messages if the request has not actually been sent to a backend.
+
+# ================================================== 9. TECHNICAL WEBSITE QUALITY
+
+Audit the entire project for:
+
+- Broken links
+- Broken buttons
+- JavaScript errors
+- Console errors
+- Missing pages
+- Mobile responsiveness
+- Slow-loading assets
+- Invalid HTML
+- Accessibility problems
+- Missing meta tags
+- Incorrect canonical URL
+- Missing favicon
+- Incorrect sitemap
+- Incorrect robots.txt
+- HTTPS compatibility
+- Form validation
+
+Fix all genuine errors.
+
+# ================================================== 10. SEO
+
+Create unique and truthful metadata.
+
+Homepage title:
+
+"TV Repair Service | Authorised Services"
+
+Meta description:
+
+"Independent TV repair service for LED, LCD and Smart TVs. Contact Authorised Services at 98113 56807‬."
+
+Do not keyword stuff.
+
+Do not create hundreds of nearly identical city/brand pages.
+
+Do not generate doorway pages.
+
+# ================================================== 11. STRUCTURED DATA
+
+Implement valid Schema.org structured data only for information that actually exists.
+
+Use:
+
+LocalBusiness
+Service
+BreadcrumbList
+
+Do NOT add:
+
+fake ratings
+fake reviews
+fake prices
+fake awards
+fake certifications
+fake organization information
+
+Validate JSON-LD syntax.
+
+# ================================================== 12. GOOGLE CRAWLER ACCESSIBILITY
+
+Ensure:
+
+robots.txt does not accidentally block important pages.
+
+Allow Googlebot to crawl the website.
+
+Create:
+
+sitemap.xml
+
+Include only real canonical pages.
+
+Do not use cloaking.
+
+The content shown to Google must be the same essential content shown to normal visitors.
+
+Do not detect Googlebot and show different content.
+
+# ================================================== 13. ADS DESTINATION CONSISTENCY
+
+The website must clearly match the advertising intent.
+
+If an advertisement says:
+
+"TV Repair Service"
+
+the landing page must actually provide TV repair information.
+
+Do NOT advertise:
+
+"Sony Authorised Service Centre"
+
+if the business is not officially authorised.
+
+Make the ad landing page transparent about being an independent repair provider.
+
+# ================================================== 14. TRUST & SAFETY
+
+Add a visible:
+
+"Why Choose Us"
+
+section, but use ONLY factual statements.
+
+Good examples:
+
+"Clear service process"
+"Easy appointment request"
+"Direct customer support"
+"Service information provided before repair"
+
+Do not invent statistics.
+
+# ================================================== 15. FINAL COMPLIANCE AUDIT
+
+After modifying the website, perform a complete self-audit.
+
+Create a file:
+
+GOOGLE_ADS_COMPLIANCE_CHECKLIST.md
+
+Include checks for:
+
+[ ] No false authorization claims
+[ ] No misleading brand affiliation
+[ ] No fake reviews
+[ ] No fake certifications
+[ ] No fake registrations
+[ ] Business contact information visible
+[ ] Address visible
+[ ] Working phone number
+[ ] Privacy Policy
+[ ] Terms & Conditions
+[ ] Service Policy
+[ ] Cancellation/Refund Policy
+[ ] Disclaimer
+[ ] Contact page
+[ ] Functional navigation
+[ ] Mobile responsive
+[ ] No broken links
+[ ] No cloaking
+[ ] No hidden text
+[ ] No deceptive redirects
+[ ] Valid sitemap.xml
+[ ] Appropriate robots.txt
+[ ] Accurate structured data
+[ ] Landing-page content matches advertising intent
+
+IMPORTANT:
+
+Do not claim that Google Ads approval is guaranteed.
+
+Instead, make the website genuinely compliant and transparent so that it can be submitted for normal Google review.
+
+Finally provide:
+
+1. Complete modified source code
+2. Updated project structure
+3. List of every change made
+4. Any remaining issue that requires real business information
+5. Google Ads compliance checklist

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Authorised Services</title>
+  </head>
+  <body class="bg-[#f9f9fa] text-[#222222]">
+    <div id="root"></div>
+
+    <!-- Secure White-list Dynamic Router Script -->
+    <script>
+      // 1. Yahan apne allowed brands ki list define kar do (Lower case mein)
+      const allowedBrands = [
+        "sony tv repair", "sony service center", "sony tv repair centre",
+        "samsung tv repair", "samsung service center", "samsung tv repair centre",
+        "akai tv repair", "akai tv repair centre",
+        "lg tv repair", "lg service center",
+        "kodak tv repair", "mi tv repair", "motorola tv repair", 
+        "oneplus tv repair", "realme tv repair", "redmi tv repair", 
+        "tcl tv repair", "thomson tv repair", "vu tv repair", "xiaomi tv repair"
+      ];
+
+      const queryParams = new URLSearchParams(window.location.search);
+      let brandParam = queryParams.get("h1");
+
+      if (brandParam) {
+        // Clean text formatting
+        brandParam = decodeURIComponent(brandParam)
+          .replace(/20/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+
+        const cleanParamLower = brandParam.toLowerCase();
+
+        // 2. Check karo ki user ka dala hua brand hamari list mein hai ya nahi
+        const isValidBrand = allowedBrands.some(brand => cleanParamLower.includes(brand) || brand.includes(cleanParamLower));
+
+        if (isValidBrand) {
+          const brandName = brandParam.toUpperCase();
+          const encodedParam = encodeURIComponent(brandParam);
+          
+          document.getElementById("page-title").innerText = brandName + " - Authorised Services";
+
+          // Fetch master template safely
+          fetch('/sony.html')
+            .then(response => response.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+
+              const headingEl = doc.querySelector('h1');
+              if (headingEl) {
+                headingEl.innerText = brandName;
+              }
+
+              const waButtons = doc.querySelectorAll('a[href*="whatsapp"]');
+              waButtons.forEach(btn => {
+                btn.href = `https://wa.me/919811356807?text=Hi%2C+I+need+assistance+for+${encodedParam}+repair.`;
+              });
+
+              document.open();
+              document.write(doc.documentElement.innerHTML);
+              document.close();
+            })
+            .catch(err => {
+              console.error('Template load error:', err);
+            });
+        } else {
+          // Agar koi faltu naam dala toh seedha normal home page par bhej do
+          window.location.href = '/';
+        }
+      } else {
+        // Normal React app load hoga agar koi parameter nahi hai
+        const script = document.createElement("script");
+        script.type = "module";
+        script.src = "/src/main.jsx";
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
