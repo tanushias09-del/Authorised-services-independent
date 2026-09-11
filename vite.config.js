@@ -1,18 +1,7 @@
-<<<<<<< HEAD
 import { defineConfig } from 'vite'
-import react from '@vitejs/react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  base: '/authorised-services/',
-})
-=======
-import { defineConfig } from 'vite'
-import react from '@vitejs/react'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/authorised-services/',
+  base: '/Authorised-services-independent/',
 })
->>>>>>> 94b67cfade9a7f388140998e9d246c9bbf0d4f9f
