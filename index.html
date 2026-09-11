@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="page-title">Authorised Services</title>
   </head>
@@ -43,8 +43,10 @@
           
           document.getElementById("page-title").innerText = brandName + " - Authorised Services";
 
-          // Fetch master template safely
-          fetch('/sony.html')
+          // Fetch master template safely with relative path support for GitHub Pages
+          const basePath = window.location.pathname.includes('/Authorised-services-independent') ? '/Authorised-services-independent' : '';
+          
+          fetch(basePath + '/sony.html')
             .then(response => response.text())
             .then(html => {
               const parser = new DOMParser();
@@ -69,13 +71,13 @@
             });
         } else {
           // Agar koi faltu naam dala toh seedha normal home page par bhej do
-          window.location.href = '/';
+          window.location.href = './';
         }
       } else {
-        // Normal React app load hoga agar koi parameter nahi hai
+        // Normal React app load hoga agar koi parameter nahi hai (Vite relative path fix)
         const script = document.createElement("script");
         script.type = "module";
-        script.src = "/src/main.jsx";
+        script.src = "./src/main.jsx";
         document.body.appendChild(script);
       }
     </script>
