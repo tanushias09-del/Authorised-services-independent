@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';       
 import Footer from './components/Footer';
-import CookieBanner from './components/Cookiebanner';
+import CookieBanner from './components/CookieBanner';
 
-import Home from './pages/home';
+import Home from './pages/Home';
 import TVRepair from './pages/TVRepair';
 import Services from './pages/Services';
 import About from './pages/About';
