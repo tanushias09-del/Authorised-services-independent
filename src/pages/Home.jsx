@@ -42,9 +42,9 @@ export default function Home() {
           <div className="bg-white border border-gray-200/90 rounded-3xl p-4 sm:p-8 shadow-xl shadow-indigo-100/50 overflow-hidden">
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-indigo-50/50 via-white to-indigo-50/50 flex items-center justify-center p-2 sm:p-6">
               <img 
-                src="/hero-repair.jpg" 
-                alt="Repair Technicians" 
-              />
+  src={`${import.meta.env.BASE_URL}hero-repair.jpg`} 
+  alt="Repair Technicians" 
+/>
             </div>
           </div>
 
