@@ -63,10 +63,10 @@ function Header() {
 // --- Footer Component ---
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-8 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-gray-900 text-gray-300 pt-12 pb-8 px-6 text-[11px] leading-relaxed relative">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-white tracking-wide">Authorised Services</h3>
+          <h3 className="text-xl font-bold text-white tracking-wide">AUTHORISED SERVICES</h3>
           <p className="text-sm text-gray-400 leading-relaxed">Independent TV & Home Appliance Repair Service. Expert multi-brand support.</p>
         </div>
         <div>
@@ -97,14 +97,14 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
-        <p>© 2026 Authorised Services. All Rights Reserved.</p>
+      <div className="max-w-7xl mx-auto pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+        <p>© 2026 AUTHORISED SERVICE. All Rights Reserved under Indian law.</p>
       </div>
     </footer>
   );
 }
 
-// --- Home Page Component (With Full Design & Dynamic ?h1= Brand Support) ---
+// --- Home Page Component (Full Layout + Dynamic Brand) ---
 function Home() {
   const [searchParams] = useSearchParams();
   const h1Param = searchParams.get('h1');
@@ -113,15 +113,23 @@ function Home() {
   useEffect(() => {
     if (h1Param) {
       const decodedBrand = decodeURIComponent(h1Param).toUpperCase();
-      // Agar parameter me pehle se "SERVICE CENTER" likha hai toh wahi rehne do, nahi toh jod do
       const finalTitle = decodedBrand.includes("SERVICE") ? decodedBrand : `${decodedBrand} SERVICE CENTER`;
       setBrandTitle(finalTitle);
       document.title = `${finalTitle} | Authorised Services`;
     }
   }, [h1Param]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const phone = e.target.phone.value;
+    const text = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${brandTitle}*:%0A- *Name:* ${encodeURIComponent(name)}%0A- *Phone:* ${encodeURIComponent(phone)}`;
+    window.open(`https://wa.me/919811356807?text=${text}`, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-[#fcfbfa] text-gray-800">
+      {/* Hero Section */}
       <section className="py-10 sm:py-14 px-4 sm:px-8 bg-gradient-to-b from-indigo-50/60 to-[#fcfbfa] border-b border-gray-200/60 text-center">
         <div className="max-w-4xl mx-auto space-y-6">
           <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mx-auto">
@@ -132,8 +140,28 @@ function Home() {
             {brandTitle}
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            India’s leading independent provider for fast, reliable, and professional home appliance repair. Our expert technicians use premium-grade spare parts.
+            India’s leading independent provider for fast, reliable, and professional home appliance repair. Our expert technicians use premium-grade spare parts to ensure your essential appliances run smoothly year-round.
           </p>
+
+          {/* Quick Booking Form */}
+          <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl text-left mt-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
+            <p className="text-xs text-gray-500 mb-4">Send details directly via WhatsApp.</p>
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
+                <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
+                <input type="tel" name="phone" required placeholder="9811356807" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+              </div>
+              <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition-colors flex items-center justify-center gap-2">
+                <MessageSquare size={16} />
+                <span>Send Request on WhatsApp</span>
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -159,15 +187,56 @@ function Home() {
         </ul>
       </div>
 
-      {/* Locations Section */}
+      {/* How to Book Our Service */}
+      <div className="max-w-6xl mx-auto my-12 px-6 text-center">
+        <h2 className="text-2xl font-bold mb-3">How to Book Our Service?</h2>
+        <p className="text-xs text-gray-500 mb-8 max-w-xl mx-auto">Simple, secure, and completely hassle-free steps to get your appliances fixed.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          {[
+            { step: "01", title: "Initiate Contact", desc: "Call or drop a message on our WhatsApp support line." },
+            { step: "02", title: "Share Details", desc: "Provide your appliance model and describe the technical problem." },
+            { step: "03", title: "Instant Confirmation", desc: "Receive appointment confirmation and technician details within minutes." },
+            { step: "04", title: "Expert Assigned", desc: "A background-verified and experienced technician is dispatched." },
+            { step: "05", title: "Doorstep Visit", desc: "Rigorous multi-point diagnostic check and spot repair at your home." },
+            { step: "06", title: "Service Finalization", desc: "Test the appliance thoroughly and pay securely via UPI, card, or cash." }
+          ].map((item, idx) => (
+            <div key={idx} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-2">
+              <div className="text-blue-600 bg-blue-50 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold">{item.step}</div>
+              <h3 className="font-bold text-sm text-gray-800">{item.title}</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Serving All Major Locations */}
       <div className="max-w-6xl mx-auto my-10 text-center px-4">
         <h2 className="text-lg font-bold mb-3">Serving All Major Locations</h2>
-        <p className="text-xs text-gray-500 mb-6 max-w-xl mx-auto">We provide fast and reliable doorstep appliance repair services across major cities:</p>
+        <p className="text-xs text-gray-500 mb-6 max-w-xl mx-auto">We provide fast doorstep appliance repair services across major cities:</p>
         <div className="flex flex-wrap justify-center gap-2">
-          {['Noida', 'Delhi', 'Faridabad', 'Ghaziabad', 'Gurugram', 'Greater Noida', 'Kanpur', 'Kolkata', 'Meerut', 'Nagpur', 'Patna', 'Varanasi'].map((loc, i) => (
+          {['Noida', 'Delhi', 'Faridabad', 'Ghaziabad', 'Gurugram', 'Greater Noida', 'Kanpur', 'Kolkata', 'Meerut', 'Nagpur', 'Patna', 'Varanasi', 'Akola', 'Udaipur'].map((loc, i) => (
             <span key={i} className="text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100 bg-blue-50/50 flex items-center gap-1">
               <MapPin size={10} /> {loc}
             </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="max-w-6xl mx-auto my-12 px-6 text-center">
+        <h2 className="text-2xl font-bold mb-3">Verified Client Testimonials</h2>
+        <p className="text-xs text-gray-500 mb-8 max-w-xl mx-auto">Read feedback from our satisfied clients.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          {[
+            { name: "Suresh Shah, DELHI", review: "Exceptional doorstep service. My 55-inch Smart TV backlight failure was fixed within hours right at home." },
+            { name: "Karthik Rao, delhi", review: "Very prompt response. OLED TV screen went blank suddenly; technician replaced power board cleanly." },
+            { name: "Hiren Patel, noida", review: "Impressive speed. They arrived within an hour of logging our complaint and repaired the unit swiftly." }
+          ].map((t, i) => (
+            <div key={i} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between space-y-3">
+              <div className="text-amber-500 flex gap-0.5 text-xs"><Star size={12}/><Star size={12}/><Star size={12}/><Star size={12}/><Star size={12}/></div>
+              <p className="text-xs text-gray-700 italic leading-relaxed">"{t.review}"</p>
+              <span className="text-[11px] font-bold text-blue-600">- {t.name}</span>
+            </div>
           ))}
         </div>
       </div>
