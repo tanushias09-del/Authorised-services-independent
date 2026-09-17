@@ -37,14 +37,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-10 sm:py-14 px-4 sm:px-8 bg-gradient-to-b from-indigo-50/60 via-[#fcfbfa] to-[#fcfbfa] border-b border-gray-200/60">
         <div className="max-w-6xl mx-auto space-y-8">
-          
+
           {/* Image Banner */}
           <div className="bg-white border border-gray-200/90 rounded-3xl p-4 sm:p-8 shadow-xl shadow-indigo-100/50 overflow-hidden">
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-indigo-50/50 via-white to-indigo-50/50 flex items-center justify-center p-2 sm:p-6">
-              <img 
-  src={`${import.meta.env.BASE_URL}hero-repair.jpg`} 
-  alt="Repair Technicians" 
-/>
+              <img
+                src="banner.jpg"
+                alt="Repair Technicians"
+              />
             </div>
           </div>
 
@@ -68,7 +68,7 @@ export default function Home() {
           <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl shadow-gray-100">
             <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
             <p className="text-xs text-gray-500 mb-4">Send details directly via WhatsApp.</p>
-            
+
             <form onSubmit={handleWhatsAppSubmit} className="space-y-3">
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
