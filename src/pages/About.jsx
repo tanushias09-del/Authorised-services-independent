@@ -8,7 +8,7 @@ export default function About() {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-8">
       <SEO
         title="About Us | Authorised Services"
-        description="Learn about Authorised Services, an independent TV and home appliance repair service provider based at 4A, Mavi Mohalla. Call 98113 56807‬."
+        description="Learn about Authorised Services, an independent TV and home appliance repair service provider based at Police Chowki, Near GS Model School, Sec-62, Noida, Ghaziabad,  U.P, 201309. Call 98113 56807‬."
         canonical="https://authorisedservices.in/about"
       />
 
@@ -31,7 +31,7 @@ export default function About() {
           </p>
           <p>
             Operating out of our service base at{" "}
-            <strong>4A, Mavi Mohalla</strong>, our core focus is delivering
+            <strong>Police Chowki, Near GS Model School, Sec-62, Noida, Ghaziabad,  U.P, 201309</strong>, our core focus is delivering
             transparent, reliable, and professional repair support directly to
             our customers.
           </p>

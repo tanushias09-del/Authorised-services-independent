@@ -50,7 +50,11 @@ export default function Home() {
 
           {/* Dynamic Heading jo URL ke hisaab se change hogi */}
           <div className="text-center max-w-3xl mx-auto space-y-4 pt-2">
-            
+            <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
+              <ShieldCheck size={16} className="text-indigo-700" />
+              <span>Independent Repair Service Provider</span>
+            </div>
+
 
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight uppercase">
               {dynamicTitle}
@@ -274,10 +278,6 @@ export default function Home() {
         </div>
         <div className="divider-line"></div>
 
-<div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
-              <ShieldCheck size={16} className="text-indigo-700" />
-              <span>Independent Repair Service Provider</span>
-            </div>
 
         {/* Serving All Major Locations */}
         <div id="locations" className="mb-10 text-center px-4 scroll-mt-20">

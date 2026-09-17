@@ -51,7 +51,7 @@ export default function ServicePolicy() {
               Technician Visit Process
             </h2>
             <p>
-              Our technicians arrive at your location (4A, Mavi Mohalla service
+              Our technicians arrive at your location (Police Chowki, Near GS Model School, Sec-62, Noida, Ghaziabad,  U.P, 201309 service
               area) at the agreed scheduled appointment time to inspect the
               appliance.
             </p>

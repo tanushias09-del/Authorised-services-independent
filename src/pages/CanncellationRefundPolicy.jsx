@@ -93,7 +93,7 @@ export default function CancellationRefundPolicy() {
             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-1">
               <p className="font-bold text-gray-900">Authorised Services</p>
               <p>Phone: 98113 56807‬</p>
-              <p>Address: 4A, Mavi Mohalla</p>
+              <p>Address: Police Chowki, Near GS Model School, Sec-62, Noida, Ghaziabad,  U.P, 201309</p>
             </div>
           </section>
         </div>

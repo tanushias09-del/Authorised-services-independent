@@ -29,7 +29,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-8">
       <SEO
         title="Contact Us | Authorised Services"
-        description="Contact Authorised Services for TV and appliance repair. Call 98113 56807‬ or visit 4A, Mavi Mohalla. Fast independent repair support."
+        description="Contact Authorised Services for TV and appliance repair. Call 98113 56807‬ or visit Police Chowki, Near GS Model School, Sec-62, Noida, Ghaziabad,  U.P, 201309. Fast independent repair support."
         canonical="https://authorisedservices.in/contact"
       />
 

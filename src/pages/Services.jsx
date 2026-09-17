@@ -76,7 +76,7 @@ export default function Services() {
             </li>
             <li>
               <strong>Technician Visit:</strong> Our technician visits your
-              location (4A, Mavi Mohalla area/surrounds).
+              location (Police Chowki, Near GS Model School, Sec-62, Noida, Ghaziabad,  U.P, 201309 area/surrounds).
             </li>
             <li>
               <strong>Diagnosis & Estimate:</strong> Thorough fault analysis
