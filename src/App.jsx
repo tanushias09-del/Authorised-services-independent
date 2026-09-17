@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, useSearchParams } from 'react-router-dom';
-import { Phone, MessageSquare, MapPin, ShieldCheck, ShieldAlert, CheckCircle2, ArrowRight, Menu, X, Send } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link, useSearchParams } from 'react-router-dom';
+import { Phone, MessageSquare, MapPin, ShieldCheck, ShieldAlert, CheckCircle2, ArrowRight, Menu, X, Send, Wrench, Clock, Star, PlusCircle } from 'lucide-react';
 
 // --- Header Component ---
 function Header() {
@@ -104,33 +104,27 @@ function Footer() {
   );
 }
 
-// --- Home Page Component (With Dynamic ?h1= Brand Support) ---
+// --- Home Page Component (With Full Design & Dynamic ?h1= Brand Support) ---
 function Home() {
   const [searchParams] = useSearchParams();
   const h1Param = searchParams.get('h1');
-  const [brandTitle, setBrandTitle] = useState("AUTHORISED SERVICES - Independent TV & Home Appliance Repair");
+  const [brandTitle, setBrandTitle] = useState("AUTHORISED SERVICES");
 
   useEffect(() => {
     if (h1Param) {
       const decodedBrand = decodeURIComponent(h1Param).toUpperCase();
-      setBrandTitle(`${decodedBrand} SERVICE CENTER`);
-      document.title = `${decodedBrand} SERVICE CENTER | Authorised Services`;
+      // Agar parameter me pehle se "SERVICE CENTER" likha hai toh wahi rehne do, nahi toh jod do
+      const finalTitle = decodedBrand.includes("SERVICE") ? decodedBrand : `${decodedBrand} SERVICE CENTER`;
+      setBrandTitle(finalTitle);
+      document.title = `${finalTitle} | Authorised Services`;
     }
   }, [h1Param]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const phone = e.target.phone.value;
-    const text = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${brandTitle}*:%0A- *Name:* ${encodeURIComponent(name)}%0A- *Phone:* ${encodeURIComponent(phone)}`;
-    window.open(`https://wa.me/919811356807?text=${text}`, '_blank');
-  };
-
   return (
     <div className="min-h-screen bg-[#fcfbfa] text-gray-800">
-      <section className="py-10 sm:py-14 px-4 sm:px-8 bg-gradient-to-b from-indigo-50/60 to-[#fcfbfa] border-b border-gray-200/60">
-        <div className="max-w-6xl mx-auto space-y-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide">
+      <section className="py-10 sm:py-14 px-4 sm:px-8 bg-gradient-to-b from-indigo-50/60 to-[#fcfbfa] border-b border-gray-200/60 text-center">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mx-auto">
             <ShieldCheck size={16} className="text-indigo-700" />
             <span>Independent Repair Service Provider</span>
           </div>
@@ -138,79 +132,63 @@ function Home() {
             {brandTitle}
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            India’s leading independent provider for fast, reliable, and professional home appliance repairs.
+            India’s leading independent provider for fast, reliable, and professional home appliance repair. Our expert technicians use premium-grade spare parts.
           </p>
-
-          <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl text-left">
-            <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
-            <p className="text-xs text-gray-500 mb-4">Send details directly via WhatsApp.</p>
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
-                <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
-                <input type="tel" name="phone" required placeholder="9811356807" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-              </div>
-              <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition-colors flex items-center justify-center gap-2">
-                <MessageSquare size={16} />
-                <span>Send Request on WhatsApp</span>
-              </button>
-            </form>
-          </div>
         </div>
       </section>
+
+      {/* Contact Details Bar */}
+      <div className="max-w-6xl mx-auto my-10 px-6">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-gray-700 bg-gray-50 p-5 rounded-lg border border-gray-100 shadow-sm text-center">
+          <li className="flex flex-col items-center justify-center gap-2 border-b md:border-b-0 border-gray-200 pb-3 md:pb-0">
+            <Phone className="text-blue-600" size={16} />
+            <span><strong>CALLING LINE:</strong><br />98113 56807</span>
+          </li>
+          <li className="flex flex-col items-center justify-center gap-2 border-b md:border-b-0 border-gray-200 pb-3 md:pb-0">
+            <MessageSquare className="text-blue-600" size={16} />
+            <span><strong>WhatsApp Support:</strong><br />+91 98113 56807</span>
+          </li>
+          <li className="flex flex-col items-center justify-center gap-2 border-b md:border-b-0 border-gray-200 pb-3 md:pb-0">
+            <span className="text-blue-600 font-bold">@</span>
+            <span><strong>Email:</strong><br />authorisedservicesinfo@gmail.com</span>
+          </li>
+          <li className="flex flex-col items-center justify-center gap-2">
+            <Clock className="text-blue-600" size={16} />
+            <span><strong>Schedule:</strong><br />24/7 Support | 8:00 AM - 10:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Locations Section */}
+      <div className="max-w-6xl mx-auto my-10 text-center px-4">
+        <h2 className="text-lg font-bold mb-3">Serving All Major Locations</h2>
+        <p className="text-xs text-gray-500 mb-6 max-w-xl mx-auto">We provide fast and reliable doorstep appliance repair services across major cities:</p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {['Noida', 'Delhi', 'Faridabad', 'Ghaziabad', 'Gurugram', 'Greater Noida', 'Kanpur', 'Kolkata', 'Meerut', 'Nagpur', 'Patna', 'Varanasi'].map((loc, i) => (
+            <span key={i} className="text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100 bg-blue-50/50 flex items-center gap-1">
+              <MapPin size={10} /> {loc}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
-// --- Other Basic Pages ---
-function TVRepair() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Professional TV Repair Services</h1><p className="text-gray-600">Expert diagnostics for LED, LCD, OLED, and Smart TVs.</p></div>;
-}
+// --- Other Pages Placeholder ---
+function TVRepair() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">TV Repair Services</h1></div>; }
+function ServicesPage() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Appliance Services</h1></div>; }
+function About() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">About Us</h1></div>; }
+function Contact() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Contact Us</h1></div>; }
+function BookRepair() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Book a Repair</h1></div>; }
+function PrivacyPolicy() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Privacy Policy</h1></div>; }
+function Terms() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Terms & Conditions</h1></div>; }
+function ServicePolicy() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Service Policy</h1></div>; }
+function RefundPolicy() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Refund Policy</h1></div>; }
+function Disclaimer() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Disclaimer</h1></div>; }
+function NotFound() { return <div className="py-20 text-center"><h1 className="text-6xl font-bold text-blue-600">404</h1><p className="text-gray-600 mt-2">Page Not Found</p><Link to="/" className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg">Back to Home</Link></div>; }
 
-function ServicesPage() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Home Appliance Services</h1><p className="text-gray-600">Washing machines, Refrigerators, AC, and Microwaves repair.</p></div>;
-}
-
-function About() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">About Authorised Services</h1><p className="text-gray-600">Independent TV and appliance repair service provider.</p></div>;
-}
-
-function Contact() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Contact Us</h1><p className="text-gray-600">Call us at 9811356807 for instant support.</p></div>;
-}
-
-function BookRepair() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Book a Repair</h1><p className="text-gray-600">Schedule a technician visit easily.</p></div>;
-}
-
-function PrivacyPolicy() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Privacy Policy</h1><p className="text-gray-600">Your privacy is important to us.</p></div>;
-}
-
-function Terms() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Terms & Conditions</h1><p className="text-gray-600">Terms of service guidelines.</p></div>;
-}
-
-function ServicePolicy() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Service Policy</h1><p className="text-gray-600">Our operating policies.</p></div>;
-}
-
-function RefundPolicy() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Cancellation & Refund Policy</h1><p className="text-gray-600">Refund details.</p></div>;
-}
-
-function Disclaimer() {
-  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Disclaimer</h1><p className="text-gray-600">Independent service provider disclaimer.</p></div>;
-}
-
-function NotFound() {
-  return <div className="py-20 text-center"><h1 className="text-6xl font-bold text-blue-600">404</h1><p className="text-gray-600 mt-2">Page Not Found</p><Link to="/" className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg">Back to Home</Link></div>;
-}
-
-// --- Main App Component ---
+// --- Main App ---
 export default function App() {
   return (
     <Router>
