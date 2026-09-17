@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useSearchParams } from 'react-router-dom';
-import { Phone, MessageSquare, MapPin, ShieldCheck, ShieldAlert, CheckCircle2, ArrowRight, Menu, X, Send, Wrench, Clock, Star, PlusCircle } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Phone, MessageSquare, MapPin, ShieldCheck, ShieldAlert, CheckCircle2, ArrowRight, Menu, X, Send } from 'lucide-react';
 
 // --- Header Component ---
 function Header() {
@@ -63,10 +63,10 @@ function Header() {
 // --- Footer Component ---
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-8 px-6 text-[11px] leading-relaxed relative">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-gray-900 text-gray-300 pt-12 pb-8 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-white tracking-wide">AUTHORISED SERVICES</h3>
+          <h3 className="text-xl font-bold text-white tracking-wide">Authorised Services</h3>
           <p className="text-sm text-gray-400 leading-relaxed">Independent TV & Home Appliance Repair Service. Expert multi-brand support.</p>
         </div>
         <div>
@@ -97,25 +97,24 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
-        <p>© 2026 AUTHORISED SERVICE. All Rights Reserved under Indian law.</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+        <p>© 2026 Authorised Services. All Rights Reserved.</p>
       </div>
     </footer>
   );
 }
 
-// --- Home Page Component (Full Layout + Dynamic Brand) ---
+// --- Home Page Component (With Dynamic ?h1= Brand Support) ---
 function Home() {
   const [searchParams] = useSearchParams();
   const h1Param = searchParams.get('h1');
-  const [brandTitle, setBrandTitle] = useState("AUTHORISED SERVICES");
+  const [brandTitle, setBrandTitle] = useState("AUTHORISED SERVICES - Independent TV & Home Appliance Repair");
 
   useEffect(() => {
     if (h1Param) {
       const decodedBrand = decodeURIComponent(h1Param).toUpperCase();
-      const finalTitle = decodedBrand.includes("SERVICE") ? decodedBrand : `${decodedBrand} SERVICE CENTER`;
-      setBrandTitle(finalTitle);
-      document.title = `${finalTitle} | Authorised Services`;
+      setBrandTitle(`${decodedBrand} SERVICE CENTER`);
+      document.title = `${decodedBrand} SERVICE CENTER | Authorised Services`;
     }
   }, [h1Param]);
 
@@ -129,10 +128,9 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-[#fcfbfa] text-gray-800">
-      {/* Hero Section */}
-      <section className="py-10 sm:py-14 px-4 sm:px-8 bg-gradient-to-b from-indigo-50/60 to-[#fcfbfa] border-b border-gray-200/60 text-center">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mx-auto">
+      <section className="py-10 sm:py-14 px-4 sm:px-8 bg-gradient-to-b from-indigo-50/60 to-[#fcfbfa] border-b border-gray-200/60">
+        <div className="max-w-6xl mx-auto space-y-8 text-center">
+          <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide">
             <ShieldCheck size={16} className="text-indigo-700" />
             <span>Independent Repair Service Provider</span>
           </div>
@@ -140,11 +138,10 @@ function Home() {
             {brandTitle}
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            India’s leading independent provider for fast, reliable, and professional home appliance repair. Our expert technicians use premium-grade spare parts to ensure your essential appliances run smoothly year-round.
+            India’s leading independent provider for fast, reliable, and professional home appliance repairs.
           </p>
 
-          {/* Quick Booking Form */}
-          <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl text-left mt-6">
+          <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl text-left">
             <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
             <p className="text-xs text-gray-500 mb-4">Send details directly via WhatsApp.</p>
             <form onSubmit={handleSubmit} className="space-y-3">
@@ -164,100 +161,56 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Contact Details Bar */}
-      <div className="max-w-6xl mx-auto my-10 px-6">
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-gray-700 bg-gray-50 p-5 rounded-lg border border-gray-100 shadow-sm text-center">
-          <li className="flex flex-col items-center justify-center gap-2 border-b md:border-b-0 border-gray-200 pb-3 md:pb-0">
-            <Phone className="text-blue-600" size={16} />
-            <span><strong>CALLING LINE:</strong><br />98113 56807</span>
-          </li>
-          <li className="flex flex-col items-center justify-center gap-2 border-b md:border-b-0 border-gray-200 pb-3 md:pb-0">
-            <MessageSquare className="text-blue-600" size={16} />
-            <span><strong>WhatsApp Support:</strong><br />+91 98113 56807</span>
-          </li>
-          <li className="flex flex-col items-center justify-center gap-2 border-b md:border-b-0 border-gray-200 pb-3 md:pb-0">
-            <span className="text-blue-600 font-bold">@</span>
-            <span><strong>Email:</strong><br />authorisedservicesinfo@gmail.com</span>
-          </li>
-          <li className="flex flex-col items-center justify-center gap-2">
-            <Clock className="text-blue-600" size={16} />
-            <span><strong>Schedule:</strong><br />24/7 Support | 8:00 AM - 10:00 PM</span>
-          </li>
-        </ul>
-      </div>
-
-      {/* How to Book Our Service */}
-      <div className="max-w-6xl mx-auto my-12 px-6 text-center">
-        <h2 className="text-2xl font-bold mb-3">How to Book Our Service?</h2>
-        <p className="text-xs text-gray-500 mb-8 max-w-xl mx-auto">Simple, secure, and completely hassle-free steps to get your appliances fixed.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          {[
-            { step: "01", title: "Initiate Contact", desc: "Call or drop a message on our WhatsApp support line." },
-            { step: "02", title: "Share Details", desc: "Provide your appliance model and describe the technical problem." },
-            { step: "03", title: "Instant Confirmation", desc: "Receive appointment confirmation and technician details within minutes." },
-            { step: "04", title: "Expert Assigned", desc: "A background-verified and experienced technician is dispatched." },
-            { step: "05", title: "Doorstep Visit", desc: "Rigorous multi-point diagnostic check and spot repair at your home." },
-            { step: "06", title: "Service Finalization", desc: "Test the appliance thoroughly and pay securely via UPI, card, or cash." }
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-2">
-              <div className="text-blue-600 bg-blue-50 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold">{item.step}</div>
-              <h3 className="font-bold text-sm text-gray-800">{item.title}</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Serving All Major Locations */}
-      <div className="max-w-6xl mx-auto my-10 text-center px-4">
-        <h2 className="text-lg font-bold mb-3">Serving All Major Locations</h2>
-        <p className="text-xs text-gray-500 mb-6 max-w-xl mx-auto">We provide fast doorstep appliance repair services across major cities:</p>
-        <div className="flex flex-wrap justify-center gap-2">
-          {['Noida', 'Delhi', 'Faridabad', 'Ghaziabad', 'Gurugram', 'Greater Noida', 'Kanpur', 'Kolkata', 'Meerut', 'Nagpur', 'Patna', 'Varanasi', 'Akola', 'Udaipur'].map((loc, i) => (
-            <span key={i} className="text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100 bg-blue-50/50 flex items-center gap-1">
-              <MapPin size={10} /> {loc}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Testimonials */}
-      <div className="max-w-6xl mx-auto my-12 px-6 text-center">
-        <h2 className="text-2xl font-bold mb-3">Verified Client Testimonials</h2>
-        <p className="text-xs text-gray-500 mb-8 max-w-xl mx-auto">Read feedback from our satisfied clients.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          {[
-            { name: "Suresh Shah, DELHI", review: "Exceptional doorstep service. My 55-inch Smart TV backlight failure was fixed within hours right at home." },
-            { name: "Karthik Rao, delhi", review: "Very prompt response. OLED TV screen went blank suddenly; technician replaced power board cleanly." },
-            { name: "Hiren Patel, noida", review: "Impressive speed. They arrived within an hour of logging our complaint and repaired the unit swiftly." }
-          ].map((t, i) => (
-            <div key={i} className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between space-y-3">
-              <div className="text-amber-500 flex gap-0.5 text-xs"><Star size={12}/><Star size={12}/><Star size={12}/><Star size={12}/><Star size={12}/></div>
-              <p className="text-xs text-gray-700 italic leading-relaxed">"{t.review}"</p>
-              <span className="text-[11px] font-bold text-blue-600">- {t.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
 
-// --- Other Pages Placeholder ---
-function TVRepair() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">TV Repair Services</h1></div>; }
-function ServicesPage() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Appliance Services</h1></div>; }
-function About() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">About Us</h1></div>; }
-function Contact() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Contact Us</h1></div>; }
-function BookRepair() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Book a Repair</h1></div>; }
-function PrivacyPolicy() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Privacy Policy</h1></div>; }
-function Terms() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Terms & Conditions</h1></div>; }
-function ServicePolicy() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Service Policy</h1></div>; }
-function RefundPolicy() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Refund Policy</h1></div>; }
-function Disclaimer() { return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Disclaimer</h1></div>; }
-function NotFound() { return <div className="py-20 text-center"><h1 className="text-6xl font-bold text-blue-600">404</h1><p className="text-gray-600 mt-2">Page Not Found</p><Link to="/" className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg">Back to Home</Link></div>; }
+// --- Other Basic Pages ---
+function TVRepair() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Professional TV Repair Services</h1><p className="text-gray-600">Expert diagnostics for LED, LCD, OLED, and Smart TVs.</p></div>;
+}
 
-// --- Main App ---
+function ServicesPage() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Home Appliance Services</h1><p className="text-gray-600">Washing machines, Refrigerators, AC, and Microwaves repair.</p></div>;
+}
+
+function About() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">About Authorised Services</h1><p className="text-gray-600">Independent TV and appliance repair service provider.</p></div>;
+}
+
+function Contact() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Contact Us</h1><p className="text-gray-600">Call us at 9811356807 for instant support.</p></div>;
+}
+
+function BookRepair() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Book a Repair</h1><p className="text-gray-600">Schedule a technician visit easily.</p></div>;
+}
+
+function PrivacyPolicy() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Privacy Policy</h1><p className="text-gray-600">Your privacy is important to us.</p></div>;
+}
+
+function Terms() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Terms & Conditions</h1><p className="text-gray-600">Terms of service guidelines.</p></div>;
+}
+
+function ServicePolicy() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Service Policy</h1><p className="text-gray-600">Our operating policies.</p></div>;
+}
+
+function RefundPolicy() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Cancellation & Refund Policy</h1><p className="text-gray-600">Refund details.</p></div>;
+}
+
+function Disclaimer() {
+  return <div className="py-12 px-8 max-w-4xl mx-auto"><h1 className="text-3xl font-bold mb-4">Disclaimer</h1><p className="text-gray-600">Independent service provider disclaimer.</p></div>;
+}
+
+function NotFound() {
+  return <div className="py-20 text-center"><h1 className="text-6xl font-bold text-blue-600">404</h1><p className="text-gray-600 mt-2">Page Not Found</p><Link to="/" className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg">Back to Home</Link></div>;
+}
+
+// --- Main App Component ---
 export default function App() {
   return (
     <Router>
