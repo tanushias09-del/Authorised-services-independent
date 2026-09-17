@@ -11,67 +11,68 @@
   <body class="bg-[#f9f9fa] text-[#222222]">
     <div id="root"></div>
 
-    <!-- Secure White-list Dynamic Router & Sony Template Script -->
+    <!-- Secure Dynamic Router Script -->
     <script>
-      const allowedBrands = [
-        "sony tv repair", "sony service center", "sony tv repair centre",
-        "samsung tv repair", "samsung service center", "samsung tv repair centre",
-        "akai tv repair", "akai tv repair centre",
-        "lg tv repair", "lg service center",
-        "kodak tv repair", "mi tv repair", "motorola tv repair", 
-        "oneplus tv repair", "realme tv repair", "redmi tv repair", 
-        "tcl tv repair", "thomson tv repair", "vu tv repair", "xiaomi tv repair"
-      ];
+      (function() {
+        const allowedBrands = [
+          "sony tv repair", "sony service center", "sony tv repair centre",
+          "samsung tv repair", "samsung service center", "samsung tv repair centre",
+          "akai tv repair", "akai tv repair centre",
+          "lg tv repair", "lg service center",
+          "kodak tv repair", "mi tv repair", "motorola tv repair", 
+          "oneplus tv repair", "realme tv repair", "redmi tv repair", 
+          "tcl tv repair", "thomson tv repair", "vu tv repair", "xiaomi tv repair"
+        ];
 
-      const queryParams = new URLSearchParams(window.location.search);
-      let brandParam = queryParams.get("h1");
+        const queryParams = new URLSearchParams(window.location.search);
+        let brandParam = queryParams.get("h1");
 
-      if (brandParam) {
-        brandParam = decodeURIComponent(brandParam)
-          .replace(/20/g, " ")
-          .replace(/\s+/g, " ")
-          .trim();
+        if (brandParam) {
+          brandParam = decodeURIComponent(brandParam)
+            .replace(/20/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
 
-        const cleanParamLower = brandParam.toLowerCase();
-        const isValidBrand = allowedBrands.some(brand => cleanParamLower.includes(brand) || brand.includes(cleanParamLower));
+          const cleanParamLower = brandParam.toLowerCase();
+          const isValidBrand = allowedBrands.some(brand => cleanParamLower.includes(brand) || brand.includes(cleanParamLower));
 
-        if (isValidBrand) {
-          const brandName = brandParam.toUpperCase();
-          const encodedParam = encodeURIComponent(brandParam);
-          
-          document.getElementById("page-title").innerText = brandName + " - Authorised Services";
+          if (isValidBrand) {
+            const brandName = brandParam.toUpperCase();
+            const encodedParam = encodeURIComponent(brandParam);
+            
+            document.getElementById("page-title").innerText = brandName + " - Authorised Services";
 
-          const basePath = window.location.pathname.includes('/Authorised-services-independent') ? '/Authorised-services-independent' : '';
-          
-          fetch(basePath + '/sony.html')
-            .then(response => response.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
+            fetch('/sony.html')
+              .then(response => {
+                if (!response.ok) throw new Error('Template not found');
+                return response.text();
+              })
+              .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
 
-              const headingEl = doc.querySelector('h1');
-              if (headingEl) {
-                headingEl.innerText = brandName;
-              }
+                const headingEl = doc.querySelector('h1');
+                if (headingEl) {
+                  headingEl.innerText = brandName;
+                }
 
-              const waButtons = doc.querySelectorAll('a[href*="whatsapp"]');
-              waButtons.forEach(btn => {
-                btn.href = `https://wa.me/919811356807?text=Hi%2C+I+need+assistance+for+${encodedParam}+repair.`;
+                const waButtons = doc.querySelectorAll('a[href*="whatsapp"]');
+                waButtons.forEach(btn => {
+                  btn.href = `https://wa.me/919811356807?text=Hi%2C+I+need+assistance+for+${encodedParam}+repair.`;
+                });
+
+                document.open();
+                document.write(doc.documentElement.innerHTML);
+                document.close();
+              })
+              .catch(err => {
+                console.warn('Template load skipped, rendering normal app:', err);
               });
-
-              document.open();
-              document.write(doc.documentElement.innerHTML);
-              document.close();
-            })
-            .catch(err => {
-              console.error('Template load error:', err);
-            });
-        } else {
-          window.location.href = './';
+          }
         }
-      }
+      })();
     </script>
 
-    <!-- Vite Static Entry Point (Yeh zaroori hai taaki React app bundle ho aur white screen na aaye) -->
+    <!-- Vite Static Entry Point -->
   </body>
 </html>
