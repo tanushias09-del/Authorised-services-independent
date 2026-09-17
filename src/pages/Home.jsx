@@ -9,16 +9,16 @@ export default function Home() {
   const [brandQuery, setBrandQuery] = useState("");
 
   useEffect(() => {
-    // URL se ?h1= parameter extract karne ke liye
-    const params = new URLSearchParams(location.search);
-    const h1Param = params.get('h1');
+    // Direct browser URL se query parameter uthane ka sabse safe tareeqa
+    const queryParams = new URLSearchParams(window.location.search);
+    const h1Param = queryParams.get('h1');
 
     if (h1Param) {
       const decodedText = decodeURIComponent(h1Param).toUpperCase();
       setDynamicTitle(decodedText);
       setBrandQuery(h1Param);
     }
-  }, [location]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#fcfbfa] text-gray-800">
@@ -69,11 +69,11 @@ export default function Home() {
               const phone = e.target.phone.value;
               const appliance = e.target.appliance.value;
               const problem = e.target.problem.value;
-              
+
               const text = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${dynamicTitle}*:%0A- *Name:* ${encodeURIComponent(name)}%0A- *Phone:* ${encodeURIComponent(phone)}%0A- *Appliance:* ${encodeURIComponent(appliance)}%0A- *Problem:* ${encodeURIComponent(problem)}`;
               window.open(`https://wa.me/919811356807?text=${text}`, '_blank');
             }} className="space-y-3">
-              
+
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
                 <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
