@@ -20,7 +20,7 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-<Router basename="/Authorised-services-independent">    
+<Router>    
   <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
