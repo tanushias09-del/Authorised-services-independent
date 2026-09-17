@@ -50,10 +50,7 @@ export default function Home() {
 
           {/* Dynamic Heading jo URL ke hisaab se change hogi */}
           <div className="text-center max-w-3xl mx-auto space-y-4 pt-2">
-            <div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
-              <ShieldCheck size={16} className="text-indigo-700" />
-              <span>Independent Repair Service Provider</span>
-            </div>
+            
 
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight uppercase">
               {dynamicTitle}
@@ -65,25 +62,54 @@ export default function Home() {
           </div>
 
           {/* Quick Form */}
-          <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl shadow-gray-100">
-            <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
-            <p className="text-xs text-gray-500 mb-4">Send details directly via WhatsApp.</p>
+          {/* Quick Form */}
+<div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl shadow-gray-100 text-left">
+  <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
+  <p className="text-xs text-gray-500 mb-4">Send complete details directly via WhatsApp.</p>
 
-            <form onSubmit={handleWhatsAppSubmit} className="space-y-3">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
-                <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
-                <input type="tel" name="phone" required placeholder="98113 56807" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-              </div>
-              <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition-colors shadow-sm flex items-center justify-center gap-2">
-                <MessageSquare size={16} />
-                <span>Send Request on WhatsApp</span>
-              </button>
-            </form>
-          </div>
+  <form onSubmit={(e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const phone = e.target.phone.value;
+    const appliance = e.target.appliance.value;
+    const problem = e.target.problem.value;
+    
+    const text = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${brandTitle}*:%0A- *Name:* ${encodeURIComponent(name)}%0A- *Phone:* ${encodeURIComponent(phone)}%0A- *Appliance:* ${encodeURIComponent(appliance)}%0A- *Problem:* ${encodeURIComponent(problem)}`;
+    window.open(`https://wa.me/919811356807?text=${text}`, '_blank');
+  }} className="space-y-3">
+    
+    <div>
+      <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
+      <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+    </div>
+
+    <div>
+      <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
+      <input type="tel" name="phone" required placeholder="9811356807" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+    </div>
+
+    <div>
+      <label className="block text-xs font-semibold text-gray-700 mb-1">Select Appliance *</label>
+      <select name="appliance" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm">
+        <option value="LED / Smart TV">LED / Smart TV</option>
+        <option value="Refrigerator">Refrigerator</option>
+        <option value="Washing Machine">Washing Machine</option>
+        <option value="Microwave Oven">Microwave Oven</option>
+        <option value="Air Conditioner">Air Conditioner</option>
+      </select>
+    </div>
+
+    <div>
+      <label className="block text-xs font-semibold text-gray-700 mb-1">Describe Problem *</label>
+      <input type="text" name="problem" required placeholder="e.g. No power, sound only, not cooling" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+    </div>
+
+    <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition-colors shadow-sm flex items-center justify-center gap-2 mt-2">
+      <MessageSquare size={16} />
+      <span>Send Request on WhatsApp</span>
+    </button>
+  </form>
+</div>
 
         </div>
       </section>
@@ -247,6 +273,11 @@ export default function Home() {
           </div>
         </div>
         <div className="divider-line"></div>
+
+<div className="inline-flex items-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-900 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
+              <ShieldCheck size={16} className="text-indigo-700" />
+              <span>Independent Repair Service Provider</span>
+            </div>
 
         {/* Serving All Major Locations */}
         <div id="locations" className="mb-10 text-center px-4 scroll-mt-20">
