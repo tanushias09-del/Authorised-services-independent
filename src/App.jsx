@@ -23,6 +23,27 @@ export default function App() {
 <Router>    
   <div className="flex flex-col min-h-screen">
         <Header />
+
+{/* Sticky Bottom Call-to-Action Bar */}
+<div className="fixed bottom-0 left-0 w-full flex z-50 shadow-[0_-4px_15px_rgba(0,0,0,0.15)]">
+  <a
+    href="tel:9811356807"
+    className="w-1/2 bg-blue-700 text-white py-4 flex justify-center items-center gap-2 text-sm font-bold uppercase tracking-wide border-r border-blue-900 transition-colors hover:bg-blue-800"
+  >
+    <Phone size={18} />
+    Call Now
+  </a>
+  <a
+    href="https://wa.me/919811356807?text=Hi%2C+I+would+like+to+get+assistance+for+my+appliance+repair."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-1/2 bg-emerald-600 text-white py-4 flex justify-center items-center gap-2 text-sm font-bold uppercase tracking-wide transition-colors hover:bg-emerald-700"
+  >
+    <MessageSquare size={18} />
+    WhatsApp
+  </a>
+</div>
+
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
