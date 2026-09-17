@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Wrench, Tv, ShieldCheck, Clock, Phone, ArrowRight, MessageSquare } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { ShieldCheck, MessageSquare } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Home() {
@@ -19,12 +19,6 @@ export default function Home() {
       setBrandQuery(h1Param);
     }
   }, [location]);
-
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const message = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${brandQuery || 'Appliance'}*:%0A- *Name:* ${encodeURIComponent(e.target.name.value)}%0A- *Phone:* ${encodeURIComponent(e.target.phone.value)}`;
-    window.open(`https://wa.me/9198113 56807?text=${message}`, '_blank');
-  };
 
   return (
     <div className="min-h-screen bg-[#fcfbfa] text-gray-800">
@@ -55,7 +49,6 @@ export default function Home() {
               <span>Independent Repair Service Provider</span>
             </div>
 
-
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight uppercase">
               {dynamicTitle}
             </h1>
@@ -66,54 +59,53 @@ export default function Home() {
           </div>
 
           {/* Quick Form */}
-          {/* Quick Form */}
-<div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl shadow-gray-100 text-left">
-  <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
-  <p className="text-xs text-gray-500 mb-4">Send complete details directly via WhatsApp.</p>
+          <div className="max-w-xl mx-auto bg-white border border-gray-200/90 p-6 sm:p-8 rounded-2xl shadow-xl shadow-gray-100 text-left">
+            <h3 className="text-lg font-bold text-gray-900 mb-1">Book Quick Service</h3>
+            <p className="text-xs text-gray-500 mb-4">Send complete details directly via WhatsApp.</p>
 
-  <form onSubmit={(e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const phone = e.target.phone.value;
-    const appliance = e.target.appliance.value;
-    const problem = e.target.problem.value;
-    
-    const text = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${brandTitle}*:%0A- *Name:* ${encodeURIComponent(name)}%0A- *Phone:* ${encodeURIComponent(phone)}%0A- *Appliance:* ${encodeURIComponent(appliance)}%0A- *Problem:* ${encodeURIComponent(problem)}`;
-    window.open(`https://wa.me/919811356807?text=${text}`, '_blank');
-  }} className="space-y-3">
-    
-    <div>
-      <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
-      <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-    </div>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              const name = e.target.name.value;
+              const phone = e.target.phone.value;
+              const appliance = e.target.appliance.value;
+              const problem = e.target.problem.value;
+              
+              const text = `Hello Authorised Services,%0A%0AI want to book a repair enquiry for *${dynamicTitle}*:%0A- *Name:* ${encodeURIComponent(name)}%0A- *Phone:* ${encodeURIComponent(phone)}%0A- *Appliance:* ${encodeURIComponent(appliance)}%0A- *Problem:* ${encodeURIComponent(problem)}`;
+              window.open(`https://wa.me/919811356807?text=${text}`, '_blank');
+            }} className="space-y-3">
+              
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
+                <input type="text" name="name" required placeholder="Enter your name" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+              </div>
 
-    <div>
-      <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
-      <input type="tel" name="phone" required placeholder="9811356807" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-    </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
+                <input type="tel" name="phone" required placeholder="9811356807" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+              </div>
 
-    <div>
-      <label className="block text-xs font-semibold text-gray-700 mb-1">Select Appliance *</label>
-      <select name="appliance" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm">
-        <option value="LED / Smart TV">LED / Smart TV</option>
-        <option value="Refrigerator">Refrigerator</option>
-        <option value="Washing Machine">Washing Machine</option>
-        <option value="Microwave Oven">Microwave Oven</option>
-        <option value="Air Conditioner">Air Conditioner</option>
-      </select>
-    </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Select Appliance *</label>
+                <select name="appliance" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm">
+                  <option value="LED / Smart TV">LED / Smart TV</option>
+                  <option value="Refrigerator">Refrigerator</option>
+                  <option value="Washing Machine">Washing Machine</option>
+                  <option value="Microwave Oven">Microwave Oven</option>
+                  <option value="Air Conditioner">Air Conditioner</option>
+                </select>
+              </div>
 
-    <div>
-      <label className="block text-xs font-semibold text-gray-700 mb-1">Describe Problem *</label>
-      <input type="text" name="problem" required placeholder="e.g. No power, sound only, not cooling" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
-    </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Describe Problem *</label>
+                <input type="text" name="problem" required placeholder="e.g. No power, sound only, not cooling" className="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm" />
+              </div>
 
-    <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition-colors shadow-sm flex items-center justify-center gap-2 mt-2">
-      <MessageSquare size={16} />
-      <span>Send Request on WhatsApp</span>
-    </button>
-  </form>
-</div>
+              <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg text-sm transition-colors shadow-sm flex items-center justify-center gap-2 mt-2">
+                <MessageSquare size={16} />
+                <span>Send Request on WhatsApp</span>
+              </button>
+            </form>
+          </div>
 
         </div>
       </section>
