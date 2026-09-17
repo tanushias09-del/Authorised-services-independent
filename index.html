@@ -4,74 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="page-title">Authorised Services</title>
+    <title>Authorised Services</title>
     <script type="module" crossorigin src="/Authorised-services-independent/assets/index-Gs7lxsYZ.js"></script>
     <link rel="stylesheet" crossorigin href="/Authorised-services-independent/assets/index-DhkQ3CDy.css">
   </head>
   <body class="bg-[#f9f9fa] text-[#222222]">
     <div id="root"></div>
-
-    <!-- Secure Dynamic Router Script -->
-    <script>
-      (function() {
-        const allowedBrands = [
-          "sony tv repair", "sony service center", "sony tv repair centre",
-          "samsung tv repair", "samsung service center", "samsung tv repair centre",
-          "akai tv repair", "akai tv repair centre",
-          "lg tv repair", "lg service center",
-          "kodak tv repair", "mi tv repair", "motorola tv repair", 
-          "oneplus tv repair", "realme tv repair", "redmi tv repair", 
-          "tcl tv repair", "thomson tv repair", "vu tv repair", "xiaomi tv repair"
-        ];
-
-        const queryParams = new URLSearchParams(window.location.search);
-        let brandParam = queryParams.get("h1");
-
-        if (brandParam) {
-          brandParam = decodeURIComponent(brandParam)
-            .replace(/20/g, " ")
-            .replace(/\s+/g, " ")
-            .trim();
-
-          const cleanParamLower = brandParam.toLowerCase();
-          const isValidBrand = allowedBrands.some(brand => cleanParamLower.includes(brand) || brand.includes(cleanParamLower));
-
-          if (isValidBrand) {
-            const brandName = brandParam.toUpperCase();
-            const encodedParam = encodeURIComponent(brandParam);
-            
-            document.getElementById("page-title").innerText = brandName + " - Authorised Services";
-
-            fetch('/sony.html')
-              .then(response => {
-                if (!response.ok) throw new Error('Template not found');
-                return response.text();
-              })
-              .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-
-                const headingEl = doc.querySelector('h1');
-                if (headingEl) {
-                  headingEl.innerText = brandName;
-                }
-
-                const waButtons = doc.querySelectorAll('a[href*="whatsapp"]');
-                waButtons.forEach(btn => {
-                  btn.href = `https://wa.me/919811356807?text=Hi%2C+I+need+assistance+for+${encodedParam}+repair.`;
-                });
-
-                document.open();
-                document.write(doc.documentElement.innerHTML);
-                document.close();
-              })
-              .catch(err => {
-                console.warn('Template load skipped, rendering normal app:', err);
-              });
-          }
-        }
-      })();
-    </script>
 
     <!-- Vite Static Entry Point -->
   </body>
