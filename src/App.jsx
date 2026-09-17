@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';       
 import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
+import FloatingButtons from './components/FloatingButtons'; // <--- 1. Yahan import kiya
+
 
 import Home from './pages/Home';
 import TVRepair from './pages/TVRepair';
