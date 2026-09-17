@@ -23,6 +23,22 @@ export default function App() {
 <Router>    
   <div className="flex flex-col min-h-screen">
         <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tv-repair" element={<TVRepair />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/book-repair" element={<BookRepair />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/service-policy" element={<ServicePolicy />} />
+            <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
 
 {/* Sticky Bottom Call-to-Action Bar */}
 <div className="fixed bottom-0 left-0 w-full flex z-50 shadow-[0_-4px_15px_rgba(0,0,0,0.15)]">
@@ -44,22 +60,6 @@ export default function App() {
   </a>
 </div>
 
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tv-repair" element={<TVRepair />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/book-repair" element={<BookRepair />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-            <Route path="/service-policy" element={<ServicePolicy />} />
-            <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
         <Footer />
         <CookieBanner />
       </div>
