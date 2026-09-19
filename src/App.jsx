@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import CookieBanner from './components/CookieBanner';
 import FloatingButtons from './components/FloatingButtons'; // <--- 1. Yahan import kiya
 
-
 import Home from './pages/Home';
 import TVRepair from './pages/TVRepair';
 import Services from './pages/Services';
@@ -23,7 +22,7 @@ import NotFound from './pages/NotFound';
 export default function App() {
   return (
     <Router>    
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen relative">
         <Header />
         <main className="flex-grow">
           <Routes>
@@ -43,6 +42,7 @@ export default function App() {
         </main>
         <Footer />
         <CookieBanner />
+        <FloatingButtons /> {/* <--- 2. Yahan footer ke just niche laga diya */}
       </div>
     </Router>
   );
